@@ -15,17 +15,20 @@ function Home() {
   const navigate = useNavigate();
   axios.defaults.withCredentials = true;
 
+  axios.defaults.baseURL = "https://todo-list-77ma.onrender.com"; // 
+  axios.defaults.withCredentials = true;
+
   // Functions ko useCallback mein wrap kiya taaki useEffect warning na de
   const fetchTasks = useCallback(() => {
     axios
-      .get("http://localhost:3001/get")
+      .get("https://todo-list-77ma.onrender.com/get")
       .then((result) => setTodos(result.data))
       .catch((err) => console.log(err));
   }, []);
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/verify")
+      .get("https://todo-list-77ma.onrender.com/verify")
       .then((res) => {
         if (res.data.status === "Success") {
           setName(res.data.name);
@@ -40,7 +43,7 @@ function Home() {
   const handleAdd = () => {
     if(!task) return alert("Kuch likho!");
     // Check karo ki ye teeno fields yahan se ja rahi hain
-    axios.post('http://localhost:3001/add', { task, category, dueDate })
+    axios.post('https://todo-list-77ma.onrender.com/add', { task, category, dueDate })
     .then(() => {
         setTask('');
         fetchTasks();
@@ -50,7 +53,7 @@ function Home() {
 
   // ERROR FIXED: handleEdit aur handleDelete define kiye
   const handleEdit = (id) => {
-    axios.put('http://localhost:3001/update/' + id)
+    axios.put('https://todo-list-77ma.onrender.com/update/' + id)
     .then(result => {
         console.log("Status Updated:", result.data);
         // Sabse zaroori: fetchTasks() ko dobara call karo
@@ -61,14 +64,14 @@ function Home() {
 
   const handleDelete = (id) => {
     axios
-      .delete("http://localhost:3001/delete/" + id)
+      .delete("https://todo-list-77ma.onrender.com/delete/" + id)
       .then(() => fetchTasks())
       .catch((err) => console.log(err));
   };
 
   const handleLogout = () => {
     axios
-      .post("http://localhost:3001/logout")
+      .post("https://todo-list-77ma.onrender.com/logout")
       .then((res) => {
         if (res.data.status === "Success") navigate("/login");
       })
@@ -213,3 +216,6 @@ function Home() {
 }
 
 export default Home;
+
+
+//  https://todo-list-77ma.onrender.com

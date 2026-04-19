@@ -12,7 +12,7 @@ function Signup() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:3001/register', { name, email, password })
+        axios.post('https://todo-list-77ma.onrender.com/register', { name, email, password })
             .then(res => {
                 navigate('/login'); // Signup ke baad Login page par bhej do
             })

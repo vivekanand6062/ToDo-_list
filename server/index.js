@@ -15,7 +15,7 @@ const PORT = process.env.PORT || 3001;
 const MONGO_URL = process.env.MONGO_URI;
 
 app.use(cors({
-    origin: ["http://localhost:3000"], // Aapke frontend ka URL
+    origin: ["http://localhost:3000"], 
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true // Cookies allow karne ke liye
 }));

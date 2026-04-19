@@ -12,7 +12,7 @@ function Login() {
 
    const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:3001/login', { email, password })
+    axios.post('https://todo-list-77ma.onrender.com/login', { email, password })
         .then(res => {
             if(res.data.status === "Success") {
                 navigate('/home'); // SUCCESS: Home page par bhej do
